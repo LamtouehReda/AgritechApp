@@ -1,0 +1,29 @@
+Notre base de données irm contient 4 tables:
+- la table graph contient les moyennes des valeurs d'une journée avec les paramètres :temperature,ph,humidité et la date du jour;
+- la table params contient les valeurs collectés à partir des capteurs chaque 3 second avec les paramètres : ph,température,humidité,vent et ventilateur 
+  qui est le champ de l'état du ventilateur qui prend 2 valeurs(1 si le ventilateur est activé,0 si le ventilateur est désactivé),activer est le 
+  champ de l'état de la pompe qui prend 2 valeurs(1 si la pompe est activée,0 si la pompe est désactivée) ;
+- la table seuil contient les seuils que les paramétres ne doient pas dépassée avec les paramètres: ph,humidité et température;
+- la table user contient les informations du fermier : email est son nom d'utilisateur ,password,repassword,nom,prénom,phone est le numéro du téléphone,
+- country est le pays et city qui est la ville.
+
+Pour utiliser cette base de données il faut importer le fichier irm.sql sur phpMyAdmin.
+Pour que tout adresse ip peut se connecter à la base de données on doit créer un nouveau utilisateur sur phpMyAdmin avec le nom root-net et le mot de 
+passe c'est un espace puis on ajoute notre base à cet utilisateur.
+
+le dossier new contient les fichiers php qu'il faut le mettre dans le dossier htdocs du l'application XAMPP.
+
+Pour que l'application se connecte avec le matériel il faut utilisé le meme wifi pour les deux.
+La relation entre le matériel et l'application c'est la base de données,le raspberry envoie les valeurs à la base de données et notre application 
+consulte cette base de données pour afficher ces valeurs au tableau de bord donc pour se connecter à cette base de données il faut toujours changer
+l'adresse ip dans les fichiers de l'application par l'adresse de la machine qui contient la base de données.
+voila les fichier d'ou il doit changer l'addresse ip :
+ligne : 16                        statistiques.js  
+ligne : 19 et 39                  Seuils.js 
+ligne : 25, 56, 81 et 97          principal.js 
+ligne : 19                        inscription.js
+ligne : 26                        editprofile.js
+ligne : 17                        connect.js
+
+Aprés avoir changer l'adresse ip par l'adresse ip convenable en génére une version apk de l'application ,
+vous trouvez toutes les étapes nécessaire dans cette vidéo: https://www.youtube.com/watch?v=ueJjgLbWxsY
